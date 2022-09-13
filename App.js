@@ -7,9 +7,13 @@ import { createStore , combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 
 import productReducer from './store/reducers/product'
+import CartReducer from './store/reducers/Cart'
+import OrderReducer from './store/reducers/Orders'
 
 const rootreducer = combineReducers({
-  products:productReducer
+  products:productReducer,
+  cart:CartReducer,
+  orders:OrderReducer
 })
 
 const store = createStore(rootreducer);

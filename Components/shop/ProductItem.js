@@ -6,10 +6,12 @@ import {
   StyleSheet,
   TouchableOpacity,
   TouchableNativeFeedback,
-  Platform
+  Platform,
+  Button
 } from 'react-native';
 
 import Card from '../Ui/Card';
+import Colors from '../../constants/Colors';
 
 const ProductItem = props => {
   let TouchableCmp = TouchableOpacity;
@@ -31,7 +33,7 @@ const ProductItem = props => {
               <Text style={styles.price}>${props.price.toFixed(2)}</Text>
             </View>
             <View style={styles.actions}>
-              {props.children}
+              <Button title='addToCart' color={Colors.primary} onPress={props.AddToCart} />
             </View>
           </View>
         </TouchableCmp>

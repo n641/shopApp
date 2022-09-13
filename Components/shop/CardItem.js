@@ -17,7 +17,7 @@ const CartItem = props => {
       </View>
       <View style={styles.itemData}>
         <Text style={styles.mainText}>${props.amount.toFixed(2)}</Text>
-        {props.deletable && (
+        {/* {props.deletable && ( */}
           <TouchableOpacity
             onPress={props.onRemove}
             style={styles.deleteButton}
@@ -28,7 +28,7 @@ const CartItem = props => {
               color="red"
             />
           </TouchableOpacity>
-        )}
+         {/* )} */}
       </View>
     </View>
   );
