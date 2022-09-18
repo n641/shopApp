@@ -9,6 +9,8 @@ import ProductItem from '../../Components/shop/ProductItem'
 import * as cartAction from '../../store/actions/Cart';
 import CustomHeaderButton from '../../Components/Ui/HeaderButton';
 
+import Colors from '../../constants/Colors'
+
 
 export default function ProductOverviewScreen(props) {
   const { navigation } = props;
@@ -50,11 +52,16 @@ export default function ProductOverviewScreen(props) {
           onSelect={() => {
             navigation.navigate('ProductDetailsScreen', { title: itemData.item.title, productId: itemData.item.id });
           }}
-          AddToCart={() => {
+          // AddToCart={() => {
+          //   dispatch(cartAction.addToCart(itemData.item));
+          // }}
+        >
+          <Button title='addToCart' color={Colors.primary} onPress={()=>{
             dispatch(cartAction.addToCart(itemData.item));
-          }}
-        />}
+          }} />
 
+        </ProductItem>
+      }
 
     />
   )

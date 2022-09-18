@@ -7,6 +7,7 @@ import Colors from '../../constants/Colors'
 
 
 export default function ProductDetailsScreen(props) {
+    const {navigation}=props;  
     const { productId } = props.route.params;
     const selectedProduct = useSelector(state => state.products.avalibleProducts.find(prod => prod.id === productId))
 

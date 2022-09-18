@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import Colors from '../constants/Colors'
-import {Ionicons} from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -11,7 +11,9 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import ProductOverviewScreen from '../screens/shop/ProductOverviewScreen'
 import ProductDetailsScreen from '../screens/shop/ProductDetailsScreen';
 import CartScreen from '../screens/shop/CartScreen';
-import OrdersScreen from '../screens/shop/OrdersScreen'
+import OrdersScreen from '../screens/shop/OrdersScreen';
+import UserProductScreen from '../screens/user/UserProductScreen';
+import EditProductScreen from '../screens/user/EditProductScreen';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -97,38 +99,95 @@ const OrderNavigator = () => {
 
 }
 
+const UserProduct = () => {
+  return (
+    <Stack.Navigator >
+      <Stack.Screen
+        name="UserProductScreen"
+        component={UserProductScreen}
+        options=
+        {{
+          title: 'Your Product',
+          headerStyle: {
+            backgroundColor: '#f4511e',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        }}
+      />
+
+      <Stack.Screen
+        name="EditProductScreen"
+        component={EditProductScreen}
+        options={({ route }) => ({ 
+          title: route.params.title,
+            headerStyle: {
+              backgroundColor: '#f4511e',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+          }
+          
+          })}
+
+      />
+    </Stack.Navigator>
+  )
+}
+
 const ShopNavigator = () => {
   return (
     <NavigationContainer >
       <Drawer.Navigator screenOptions={{
         headerShown: false,
-        drawerType:  'slide',
+        drawerType: 'slide',
       }}
       >
-        <Drawer.Screen name="Home" component={ProductNavigator} 
-        options={{
-          title: 'Home',
-          drawerIcon: ({focused, size}) => (
-             <Ionicons
+
+
+        <Drawer.Screen name="Home" component={ProductNavigator}
+          options={{
+            title: 'Home',
+            drawerIcon: ({ focused, size }) => (
+              <Ionicons
                 name="md-home"
                 size={size}
                 color={focused ? Colors.primary : '#ccc'}
-             />
-          )
-        }}
+              />
+            )
+          }}
         />
-        <Drawer.Screen name="Orders" component={OrderNavigator} 
-        options={{
-          title: 'Orders',
-          drawerIcon: ({focused, size}) => (
-             <Ionicons
+
+
+        <Drawer.Screen name="Orders" component={OrderNavigator}
+          options={{
+            title: 'Orders',
+            drawerIcon: ({ focused, size }) => (
+              <Ionicons
+                name="list"
+                size={size}
+                color={focused ? Colors.primary : '#ccc'}
+              />
+            )
+          }}
+        />
+
+        <Drawer.Screen name="userProduct" component={UserProduct}
+          options={{
+            title: 'Admin',
+            drawerIcon: ({ focused, size }) => (
+              <Ionicons
                 name="ios-create"
                 size={size}
                 color={focused ? Colors.primary : '#ccc'}
-             />
-          )
-        }}
+              />
+            )
+          }}
         />
+
       </Drawer.Navigator>
     </NavigationContainer>
   )

@@ -19,7 +19,8 @@ export default function CartScreen() {
                 productTitle: state.cart.items[key].productTitle,
                 productPrice: state.cart.items[key].productPrice,
                 quantity: state.cart.items[key].quantity,
-                sum: state.cart.items[key].sum
+                sum: state.cart.items[key].sum,
+                
             })
         };
         return transformeCartItem;
@@ -50,6 +51,7 @@ export default function CartScreen() {
                 dispatch(cartAction.removeFromCart(itemData.item.productId))
              }
              }
+             deletable
              />}/>
         </View>
     )
