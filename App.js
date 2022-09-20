@@ -3,12 +3,14 @@ import { StyleSheet, Text, View } from 'react-native';
 import ShopNavigator from './Navigation/shopNavigator';
 import ProductOverviewScreen from './screens/shop/ProductOverviewScreen';
 
-import { createStore , combineReducers } from 'redux';
+import { createStore , combineReducers , applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import ReduxThunk from 'redux-thunk';
 
 import productReducer from './store/reducers/product'
 import CartReducer from './store/reducers/Cart'
 import OrderReducer from './store/reducers/Orders'
+
 
 const rootreducer = combineReducers({
   products:productReducer,
@@ -16,7 +18,7 @@ const rootreducer = combineReducers({
   orders:OrderReducer
 })
 
-const store = createStore(rootreducer);
+const store = createStore(rootreducer , applyMiddleware(ReduxThunk));
 
 export default function App() {
   return (
